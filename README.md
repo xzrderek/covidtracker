@@ -7,7 +7,7 @@ pip install venv
 
 mkvirtualenv [environment_name]
 
-venv .\scripts\activate
+virtualenv .\scripts\activate
 
 pip install -r requirements.txt
 
