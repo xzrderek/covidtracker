@@ -72,6 +72,32 @@ def feed(request):
     context = {"posts": posts}
     return render(request, "feed.html", context)
 
+#Returns a Page with the template maps.html and shows map image. 
+@login_required
+def maps(request):
+    posts = Post.objects.order_by('-id')[:20]
+    context = {"posts": posts}
+    return render(request, "maps.html", context)
+
+# @login_required
+# def maps(request):
+#     if request.method == "POST":
+#         form = CreatePost(request.POST)
+#         print("Created")
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             form.save()
+#             return HttpResponseRedirect('/maps/' + str(Post.objects.latest('id').id))
+#         else:
+#             context = {'form': form}
+#             return render(response, "register.html", context)
+#     else:
+#         form = CreatePost()
+#         print("Retrieved")
+#         context = {'form': form}
+#     return render(request, 'maps.html', context)
+
 #Creates a new User if the response type is POST and redirects to /login. Otherwise, if GET, returns a page with a registration form.
 def register(response):
     if response.method == "POST":
