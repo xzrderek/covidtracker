@@ -31,7 +31,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: lightblue">
     <div class="container">
-      <a class="navbar-brand" href="/feed"><h2>The Forums</h2></a>
+      <a class="navbar-brand" href="/feed"><h2>CovidTracker</h2></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -39,9 +39,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           {% if account == user %}
-          <li class="nav-item">
-            <a class="nav-link" href="/createpost">Create Post✏️</a>
-          </li>
+          
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="/user/{{user}}">My Page</a>
@@ -54,48 +52,19 @@
       </div>
     </div>
   </nav>
+  
+  <div class="container" style="margin-top:7%; display:flex">
 
-  <div class="container" style="margin-top:7%;">
-    {% if account == user %}
-      {% if posts.count > 0 %}
-        <h2 style="margin: 3%;">Your Posts</h2>
-      {% else %}
-        <h2 style="margin: 3%;">It's kinda lonely here ;~;. Create your first post! </h2>
-      {% endif %}
-    {% else %}
-      {% if posts.count > 0 %}
-        <h2 style="margin: 3%;">{{account}}'s Posts</h2>
-      {% else %}
-        <h2 style="margin: 3%;">It seems {{account}} has not created any posts...</h2>
-      {% endif %}
-    {% endif %}
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        {% for post in posts %}
-        <div class="post-preview" style="padding:5%; border: solid lightblue 3px; border-radius: 25px;">
-          <a href="/post/{{post.id}}">
-            <h2 class="post-title">
-              {{post.title}}
-            </h2>
-            </a>
-            <h6 class="post-subtitle">
-              {{post.text|truncatechars:50 }}
-            </h6>
-          <p class="post-meta">Posted by
-            <a href="/user/{{post.author}}">{{post.author}}</a>
-            on {{post.date.date}} at {{post.date.time}}</p>
-          {% if account == user %}
-          <p style="margin-left: 90%">
-            <a href="#" onclick="deletePost({{post.id}})">delete</a>
-          </p>
-          {% endif %}
-        </div>
-        <hr>
-        {% endfor %}
-      </div>
-    </div>
+      <iframe src="https://public.domo.com/cards/azrGr" width="50%" height="500" marginheight="0" marginwidth="0" frameborder="0"></iframe>  
+      <iframe src="https://public.domo.com/cards/dyqEV" width="50%" height="500" marginheight="0" marginwidth="0" frameborder="0"></iframe>
   </div>
+  <h4>
+    <p style = "margin-left: 10%; margin-right: 10%; margin-top: 60px;">COVID-19 is caused by a new coronavirus. Coronaviruses are a large family of viruses that are common in people and many different species of animals, including camels, cattle, cats, and bats. Rarely, animal coronaviruses can infect people and then spread between people such as with MERS-CoV, SARS-CoV, and now with this new virus, named SARS-CoV-2. <br> <br>
 
+      The SARS-CoV-2 virus is a betacoronavirus, like MERS-CoV and SARS-CoV. All three of these viruses have their origins in bats. The sequences from U.S. patients are similar to the one that China initially posted, suggesting a likely single, recent emergence of this virus from an animal reservoir. <br> <br>
+      
+      Early on, many of the patients at the epicenter of the outbreak in Wuhan, Hubei Province, China had some link to a large seafood and live animal market, suggesting animal-to-person spread. Later, a growing number of patients reportedly did not have exposure to animal markets, indicating person-to-person spread. Person-to-person spread was subsequently reported outside Hubei and in countries outside China, including in the United States. Most international destinations now have ongoing community spread with the virus that causes COVID-19, as does the United States. Community spread means some people have been infected and it is not known how or where they became exposed. For more information, visit the <a target = "_blank" href = "https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/how-covid-spreads.html">official CDC website</a>. </p>
+  </h4>
 
 </body>
 
