@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: lightblue">
   <div class="container">
     <a class="navbar-brand" href="/feed/">
-      <h2>The Forums</h2>
+      <h2>CovidTracker</h2>
     </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -36,16 +36,101 @@
 <head>
   <meta charset="utf-8">
   <title>{{post.title}}</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 
 <body>
   {% load crispy_forms_tags %}
-  <h2 style="margin-right: 70%; margin-left: 5%; margin-top: 7%;">Make a Post!</h2>
-  <form class="" action="{% url 'create' %}" method="POST" style="margin-right: 70%; margin-left: 5%; margin-top: 3%;">
+  <h2 style="margin-right: 70%; margin-left: 5%; margin-top: 7%;">Maps</h2>
+  <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 37.720901, lng: -121.924042}
+        });
+
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBN9Td07Tbi7wXEVQHzCvdLDCbkBy1ZxK8&callback=initMap">
+  </script>
+  <div class="container">
+    <!-- <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+          <iframe src="https://public.domo.com/cards/axpDJ" width="100%" height="600" marginheight="0" marginwidth="0"
+            frameborder="0"></iframe>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.9706988239304!2d-121.92629378420473!3d37.72036562305999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fec386f1953c9%3A0x5ed728665fc5b9ce!2sDublin%20High%20School!5e0!3m2!1sen!2sus!4v1588282428557!5m2!1sen!2sus"
+            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+        </div>
+      </div>
+      <div style="overflow:hidden;max-width:100%;width:500px;height:500px;" class="col-lg-6 col-md-6">
+        <div id="googlemaps-canvas" style="height:100%; width:100%;max-width:100%;"><iframe
+            style="height:100%;width:100%;border:0;" frameborder="0"
+            src="https://www.google.com/maps/embed/v1/directions?origin=dublin+high+school&destination=sf+airport&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+        </div><a class="embeddedmap-code" rel="nofollow" href="https://dedicatedhosting.pro"
+          id="get-data-forembedmap">click</a>
+        <style>
+          #googlemaps-canvas img.text-marker {
+            max-width: none !important;
+            background: none !important;
+          }
+
+          img {
+            max-width: none
+          }
+        </style>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+        <iframe src="https://public.domo.com/cards/axpDJ" width="100%" height="600" marginheight="0" marginwidth="0"
+          frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+        <iframe src="https://public.domo.com/cards/bWxVg" width="100%" height="600" marginheight="0" marginwidth="0"
+          frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- <form class="" action="{% url 'create' %}" method="POST" style="margin-right: 70%; margin-left: 5%; margin-top: 3%;">
     {% csrf_token %}
     {{form|crispy}}
     <input type="submit" value="Post" class="btn btn-success" style="margin-right: 70%; margin-left: 5%;" />
-  </form>
+  </form> -->
 
 </body>
 
